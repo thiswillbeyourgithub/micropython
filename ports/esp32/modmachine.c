@@ -134,7 +134,7 @@ STATIC void mp_machine_set_freq(size_t n_args, const mp_obj_t *args) {
 
 STATIC void machine_sleep_helper(wake_type_t wake_type, size_t n_args, const mp_obj_t *args) {
     // First, disable any previously set wake-up source
-    esp_sleep_disable_wakeup_source(ESP_SLEEP_WAKEUP_ALL);
+    // esp_sleep_disable_wakeup_source(ESP_SLEEP_WAKEUP_ALL); // a bit drastic
 
     // Set the expiry time of the sleep, if given.
     if (n_args != 0) {

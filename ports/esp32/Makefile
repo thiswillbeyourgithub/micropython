@@ -29,7 +29,8 @@ BUILD ?= build-$(BOARD)
 endif
 
 # Device serial settings.
-PORT ?= /dev/ttyUSB0
+#PORT ?= /dev/ttyUSB0
+PORT ?= /dev/ttyACM0
 BAUD ?= 460800
 
 PYTHON ?= python3

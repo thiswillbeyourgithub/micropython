@@ -39,6 +39,17 @@
 #include "modmachine.h"
 #include "machine_rtc.h"
 
+
+typedef enum {
+    MP_PWRON_RESET = 1,
+    MP_HARD_RESET,
+    MP_WDT_RESET,
+    MP_DEEPSLEEP_RESET,
+    MP_SOFT_RESET
+} reset_reason_t;
+
+STATIC bool is_soft_reset = 0;
+
 #if MICROPY_HW_ENABLE_SDCARD
 #define MICROPY_PY_MACHINE_SDCARD_ENTRY { MP_ROM_QSTR(MP_QSTR_SDCard), MP_ROM_PTR(&machine_sdcard_type) },
 #else
@@ -63,6 +74,7 @@
     /* wake abilities */ \
     { MP_ROM_QSTR(MP_QSTR_SLEEP), MP_ROM_INT(MACHINE_WAKE_SLEEP) }, \
     { MP_ROM_QSTR(MP_QSTR_DEEPSLEEP), MP_ROM_INT(MACHINE_WAKE_DEEPSLEEP) }, \
+    { MP_ROM_QSTR(MP_QSTR_I2S), MP_ROM_PTR(&machine_hw_i2s_type) }, \
     \
     /* Reset reasons */ \
     { MP_ROM_QSTR(MP_QSTR_HARD_RESET), MP_ROM_INT(MP_HARD_RESET) }, \
@@ -79,16 +91,6 @@
     { MP_ROM_QSTR(MP_QSTR_TIMER_WAKE), MP_ROM_INT(ESP_SLEEP_WAKEUP_TIMER) }, \
     { MP_ROM_QSTR(MP_QSTR_TOUCHPAD_WAKE), MP_ROM_INT(ESP_SLEEP_WAKEUP_TOUCHPAD) }, \
     { MP_ROM_QSTR(MP_QSTR_ULP_WAKE), MP_ROM_INT(ESP_SLEEP_WAKEUP_ULP) }, \
-
-typedef enum {
-    MP_PWRON_RESET = 1,
-    MP_HARD_RESET,
-    MP_WDT_RESET,
-    MP_DEEPSLEEP_RESET,
-    MP_SOFT_RESET
-} reset_reason_t;
-
-STATIC bool is_soft_reset = 0;
 
 #if CONFIG_IDF_TARGET_ESP32C3
 int esp_clk_cpu_freq(void);

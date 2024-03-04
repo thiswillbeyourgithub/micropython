@@ -59,6 +59,8 @@
 // The size of 240 bytes is an engineering optimum that balances transfer performance with an acceptable use of heap space
 #define SIZEOF_TRANSFORM_BUFFER_IN_BYTES (240)
 
+#define I2S_NUM_MAX 2
+
 typedef enum {
     I2S_TX_TRANSFER,
     I2S_RX_TRANSFER,
@@ -507,7 +509,7 @@ typedef struct _machine_hw_i2s_obj_t {
 //   note:  I2S implementation makes use of the following mapping between I2S peripheral and I2S object
 //      I2S peripheral 1:  machine_hw_i2s_obj[0]
 //      I2S peripheral 2:  machine_hw_i2s_obj[1]
-STATIC machine_hw_i2s_obj_t machine_hw_i2s_obj[I2S_NUM_AUTO] = {
+STATIC machine_hw_i2s_obj_t machine_hw_i2s_obj[I2S_NUM_MAX] = {
         [0].used = false,
         [1].used = false };
 

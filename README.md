@@ -63,6 +63,7 @@ cd TTGO-T-watch-2020-Micropython-OS/src
 ```
 # Roadmap
 * Testing the microphone: https://github.com/miketeachman/micropython-i2s-examples/blob/master/examples/record_mic_to_sdcard_blocking.py
-* Implementing an easy to use API in TempOS
+    * I was able to run the code and it produced a file called mic.wav but couldn't play in on my computer and the hexdump showed it was full of 0000s. I won't have time to test some more for a bit so please join in!
+* Implement an easy to use API in TempOS
 * Profit
 

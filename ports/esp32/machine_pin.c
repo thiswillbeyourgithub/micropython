@@ -97,7 +97,7 @@ static void machine_pin_isr_handler(void *arg) {
     mp_hal_wake_main_task_from_isr();
 }
 
-STATIC void machine_pin_isr_handler_disable(void *arg) {
+static void machine_pin_isr_handler_disable(void *arg) {
     machine_pin_obj_t *self = arg;
     gpio_intr_disable(PIN_OBJ_PTR_INDEX(self) );
     mp_obj_t handler = MP_STATE_PORT(machine_pin_irq_handler)[PIN_OBJ_PTR_INDEX(self)];;
@@ -294,20 +294,20 @@ static mp_obj_t machine_pin_on(mp_obj_t self_in) {
 static MP_DEFINE_CONST_FUN_OBJ_1(machine_pin_on_obj, machine_pin_on);
 
 // pin.enable()
-STATIC mp_obj_t machine_pin_enable(mp_obj_t self_in) {
+static mp_obj_t machine_pin_enable(mp_obj_t self_in) {
     machine_pin_obj_t *self = MP_OBJ_TO_PTR(self_in);
     gpio_intr_enable(PIN_OBJ_PTR_INDEX(self));
     return mp_const_none;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(machine_pin_enable_obj, machine_pin_enable);
+static MP_DEFINE_CONST_FUN_OBJ_1(machine_pin_enable_obj, machine_pin_enable);
 
 // pin.disable()
-STATIC mp_obj_t machine_pin_disable(mp_obj_t self_in) {
+static mp_obj_t machine_pin_disable(mp_obj_t self_in) {
     machine_pin_obj_t *self = MP_OBJ_TO_PTR(self_in);
     gpio_intr_disable(PIN_OBJ_PTR_INDEX(self));
     return mp_const_none;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(machine_pin_disable_obj, machine_pin_disable);
+static MP_DEFINE_CONST_FUN_OBJ_1(machine_pin_disable_obj, machine_pin_disable);
 
 
 
@@ -388,7 +388,7 @@ static const mp_rom_map_elem_t machine_pin_locals_dict_table[] = {
     { MP_ROM_QSTR(MP_QSTR_value), MP_ROM_PTR(&machine_pin_value_obj) },
     { MP_ROM_QSTR(MP_QSTR_off), MP_ROM_PTR(&machine_pin_off_obj) },
     { MP_ROM_QSTR(MP_QSTR_on), MP_ROM_PTR(&machine_pin_on_obj) },
-       { MP_ROM_QSTR(MP_QSTR_disable), MP_ROM_PTR(&machine_pin_disable_obj) },
+    { MP_ROM_QSTR(MP_QSTR_disable), MP_ROM_PTR(&machine_pin_disable_obj) },
     { MP_ROM_QSTR(MP_QSTR_enable), MP_ROM_PTR(&machine_pin_enable_obj) },
     { MP_ROM_QSTR(MP_QSTR_irq), MP_ROM_PTR(&machine_pin_irq_obj) },
 

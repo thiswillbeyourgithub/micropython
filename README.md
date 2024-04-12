@@ -3,7 +3,7 @@
 This repo is to keep track of changes needed to reliably get the microphone working on the twatch 2020 V3.
 
 # Current status
-All current files are in `AUDIO_TEST`. There, I have a working script to play wav files on the watch (you can test it with the `recording.wav` file that I found somewhere online), and my plan is to modify the script that is supposed to record until it finally works. Both scripts are initially derived from [that repo](https://github.com/miketeachman/micropython-i2s-examples).
+All current files are in `AUDIO_TEST`. There, I have a working script to play wav files on the watch (you can test it with the `recording.wav` file that I found somewhere online), and my plan is to modify the script that is supposed to record until it finally work. Both scripts are derived from [that repo](https://github.com/miketeachman/micropython-i2s-examples). They both read and write `mic.wav` file for easy prototyping.
 
 * **The latest issue is:** the created file is empty of audio: it produces a file called mic.wav but I couldn't play it even on my computer and the hexdump showed it was actually full of 0000s. I won't have time to test some more for a bit so please join in!
 
